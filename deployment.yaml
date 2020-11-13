@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     name: pacman-deploy
-    app: pacman
+    app: pacman-wcm
   name: pacman-deploy
   labels:
 spec:
@@ -20,7 +20,7 @@ spec:
       containers:
       - image: docker.io/fdescolpro/pacman:1.0
         imagePullPolicy: IfNotPresent
-        name: pacman-container
+        name: pacman-wcm-container
         ports:
         - containerPort: 8080
         env:
@@ -76,7 +76,7 @@ spec:
         #Default
           value: "rgb(0, 0, 0)"
         - name: MY_IMAGE
-          value: IBM
+          value: WCM DEMO
         - name: MESSAGE
           value: "Initial Version"
 

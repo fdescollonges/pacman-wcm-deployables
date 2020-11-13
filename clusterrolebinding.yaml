@@ -2,12 +2,12 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   labels:
-    app: pacman    
+    app: pacman-wcm    
   name: pacman-crb
 subjects:
 - kind: ServiceAccount
   name: pacman-sa
-  namespace: pacman
+  namespace: pacman-wcm
 roleRef:
   kind: ClusterRole
   name: cluster-admin
