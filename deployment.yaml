@@ -1,0 +1,82 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    name: pacman-deploy
+    app: pacman
+  name: pacman-deploy
+  labels:
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: pacman-deploy
+  template:
+    metadata:
+      labels:
+        name: pacman-deploy
+    spec:
+      serviceAccount: pacman-sa
+      containers:
+      - image: docker.io/fdescolpro/pacman:1.0
+        imagePullPolicy: IfNotPresent
+        name: pacman-container
+        ports:
+        - containerPort: 8080
+        env:
+        - name: MONGODB_USER 
+          valueFrom:
+            secretKeyRef:
+              name: pacman-secret
+              key: MONGODB_USER 
+        - name: MONGODB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: pacman-secret
+              key: MONGODB_PASSWORD       
+        - name: DATABASE_SERVICE_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: pacman-config
+              key: DATABASE_SERVICE_NAME            
+        - name: MONGO_REPLICA_SET
+          valueFrom:
+            configMapKeyRef:
+              name: pacman-config
+              key: MONGO_REPLICA_SET
+        - name: MONGODB_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              name: pacman-config
+              key: MONGODB_DATABASE
+        - name: MY_MONGO_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: pacman-config
+              key: MY_MONGO_PORT
+        - name: MONGO_USE_SSL
+          valueFrom:
+            configMapKeyRef:
+              name: pacman-config
+              key: MONGO_USE_SSL
+        - name: MONGO_VALIDATE_SSL
+          valueFrom:
+            configMapKeyRef:
+              name: pacman-config
+              key: MONGO_VALIDATE_SSL
+        - name: MY_NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: COLOR
+        #Rouge
+          #value: "rgb(180, 33, 33)"
+        #Bleue
+          #value: "rgb(59, 108, 170)"
+        #Default
+          value: "rgb(0, 0, 0)"
+        - name: MY_IMAGE
+          value: IBM
+        - name: MESSAGE
+          value: "Initial Version"
+

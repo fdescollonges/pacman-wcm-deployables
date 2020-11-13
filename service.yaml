@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: pacman    
+    name: pacman-svc
+  name: pacman-svc
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    name: pacman-deploy
+  sessionAffinity: None
+  type: ClusterIP
