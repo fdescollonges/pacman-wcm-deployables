@@ -3,11 +3,11 @@ apiVersion: route.openshift.io/v1
 metadata:
   labels:
     app: pacman-wcm    
-  name: pacman-route
+  name: pacman-wcm-route
 spec:
   to:
     kind: Service
-    name: pacman-svc
+    name: pacman-wcm-svc
     weight: 100
   port:
     targetPort: 8080

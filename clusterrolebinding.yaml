@@ -3,10 +3,10 @@ kind: ClusterRoleBinding
 metadata:
   labels:
     app: pacman-wcm    
-  name: pacman-crb
+  name: pacman-wcm-crb
 subjects:
 - kind: ServiceAccount
-  name: pacman-sa
+  name: pacman-wcm-sa
   namespace: pacman-wcm
 roleRef:
   kind: ClusterRole
