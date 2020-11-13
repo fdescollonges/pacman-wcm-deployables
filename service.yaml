@@ -3,14 +3,14 @@ kind: Service
 metadata:
   labels:
     app: pacman-wcm    
-    name: pacman-svc
-  name: pacman-svc
+    name: pacman-wcm-svc
+  name: pacman-wcm-svc
 spec:
   ports:
   - port: 80
     protocol: TCP
     targetPort: 8080
   selector:
-    name: pacman-deploy
+    name: pacman-wcm-deploy
   sessionAffinity: None
   type: ClusterIP

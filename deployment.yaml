@@ -2,21 +2,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    name: pacman-deploy
+    name: pacman-wcm-deploy
     app: pacman-wcm
-  name: pacman-deploy
+  name: pacman-wcm-deploy
   labels:
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: pacman-deploy
+      name: pacman-wcm-deploy
   template:
     metadata:
       labels:
-        name: pacman-deploy
+        name: pacman-wcm-deploy
     spec:
-      serviceAccount: pacman-sa
+      serviceAccount: pacman-wcm-sa
       containers:
       - image: docker.io/fdescolpro/pacman:1.0
         imagePullPolicy: IfNotPresent

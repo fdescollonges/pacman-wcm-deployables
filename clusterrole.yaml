@@ -3,7 +3,7 @@ kind: ClusterRole
 metadata:
   labels:
     app: pacman-wcm    
-  name: pacman-cr
+  name: pacman-wcm-cr
 rules:
 - apiGroups: [""]
   resources: ["pods","nodes"]
